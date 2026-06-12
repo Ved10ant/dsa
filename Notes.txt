@@ -1,0 +1,23 @@
+1️⃣ What is a Linked List?
+A Linked List is a linear data structure where elements are connected using pointers/references.
+
+Unlike arrays:
+Arrays store elements in contiguous memory.
+Linked Lists store elements anywhere in memory and connect them using references.
+
+Ex:
+int[] arr = {10, 20, 30, 40};
+To insert 25 between 20 and 30 we need to shift all the elements 
+Solution:
+No shifting required. Just update references.
+
+NODE: 
+Node is the basic building block of a Linked List.
+combination of {DATA + REFERENCE/ POINTER}
+
++----+----+    +----+----+    +----+------+
+| 10 | *--|--->| 20 | *--|--->| 30 | null |
++----+----+    +----+----+    +----+------+
+
+UNDER THE HOOD:
+Under the Hood means understanding how Linked Lists are represented and connected in memory using references.
