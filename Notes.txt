@@ -15,6 +15,16 @@ NODE:
 Node is the basic building block of a Linked List.
 combination of {DATA + REFERENCE/ POINTER}
 
+class Node{
+    int data; 
+    Node next; // This points to the next Node and it can be null.
+
+    Node(int data){
+        this.data = data; //stores the value
+        this.next = null; //initially points to null
+    }
+}
+
 +----+----+    +----+----+    +----+------+
 | 10 | *--|--->| 20 | *--|--->| 30 | null |
 +----+----+    +----+----+    +----+------+

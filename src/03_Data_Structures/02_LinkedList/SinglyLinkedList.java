@@ -1,0 +1,75 @@
+public class SinglyLinkedList {
+
+    private Node head;
+    private Node tail;
+    private int size;
+
+    private class Node { // Create's structure of node
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public SinglyLinkedList(int value) {
+        Node newnNode = new Node(value);
+        head = newnNode;
+        tail = newnNode;
+        size = 1;
+    }
+
+    public void printLinkedList() { // Print's all the nodes in the linkedlist
+        Node temp = head;
+        while (temp != null) {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+
+    public void append(int value) { // Add's node to the end of the linkedlist
+        Node newNode = new Node(value);
+        if (size == 0) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size++;
+    }
+
+    public void removeLast() {
+        if (size == 0) {
+            System.out.println("empty Linkedlist");
+            return;
+        }
+        Node temp = head;
+        Node pre = head;
+        while (temp.next != null) {
+            pre = temp;
+            temp = temp.next;
+        }
+        tail = pre;
+        tail.next = null;
+        size--;
+        if (size == 0) {
+            head = null;
+            tail = null;
+        }
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkedList linkedList = new SinglyLinkedList(4); // create first node
+        linkedList.append(5); // add
+        linkedList.append(6); // add
+        linkedList.append(7); // add
+        linkedList.append(8); // add
+
+        linkedList.removeLast(); // remove-last
+
+        linkedList.printLinkedList(); // print all nodes
+    }
+}
