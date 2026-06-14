@@ -90,56 +90,90 @@ public class SinglyLinkedList {
         }
     }
 
-    // Helper method to get the node for internal use
-    private Node getNode(int index) {
+    // Public get method returns the data at the specified index
+    public int get(int index) {
         if (index < 0 || index >= size) {
             System.out.println("invalid index");
-            return null;
+            return -1;
         }
         Node temp = head;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
-
-        return temp;
+        return temp.data;
     }
 
-    // Public get method returns the data, not the Node object
-    public int get(int index) {
-        Node temp = getNode(index);
-        if (temp != null) {
-            return temp.data;
-        }
-        return -1; // Or throw an exception
-    }
-
-    // Standard parameter order is (index, value)
+    // Sets the data at the specified index to value
     public boolean set(int index, int value) {
-        Node temp = getNode(index);
-        if (temp != null) {
-            temp.data = value;
+        if (index < 0 || index >= size) {
+            System.out.println("invalid index");
+            return false;
+        }
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.data = value;
+        return true;
+    }
+
+    // Inserts a new node with value at the specified index
+    public boolean Insert(int value, int index) {
+        if (index < 0 || index > size)
+            return false;
+        if (index == 0) {
+            prepend(value);
             return true;
         }
-        return false;
+        if (index == size) {
+            append(value);
+            return true;
+        }
+        Node newNode = new Node(value);
+        Node temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+        size++;
+        return true;
+
     }
 
-    // public boolean Insert(int value , int index){
-    //     if(index < 0 || index > size) return false;
-    //     if(index == 0){
-    //         prepend(value);
-    //         return true;
-    //     }
-    //     if(index == size){
-    //         append(value);
-    //         return true;
-    //     }
-    //     Node newNode = new Node(value);
-    //     Node temp = get(index);
-    //     newNode.next = temp.next;
-    //     temp = 
+    public boolean Remove(int index) {
+        if (index < 0 || index > size)
+            return false;
+        if (index == 0) {
+            removeFirst();
+            return true;
+        }
+        if (index == size) {
+            removeLast();
+            return true;
+        }
+        Node temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        size--;
+        return true;
+    }
 
-    // }
-
+    public void ReverseLl() {
+        Node temp = head;
+        head = tail;
+        tail = temp;
+        Node after = temp.next;
+        Node before = null;
+        for (int i = 0; i < size; i++) {
+            after = temp.next;
+            temp.next = before;
+            before = temp;
+            temp = after;
+        }
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList linkedList = new SinglyLinkedList(4); // create first node
@@ -148,17 +182,21 @@ public class SinglyLinkedList {
         linkedList.append(7); // add
         linkedList.append(8); // add
 
-        linkedList.removeLast(); // remove-last
+        // linkedList.removeLast(); // remove-last
 
         linkedList.prepend(3); // add-first
         linkedList.prepend(2); // add-first
         linkedList.prepend(1); // add-first
 
-        linkedList.removeFirst(); // remove-first
+        // linkedList.removeFirst(); // remove-first
 
         System.out.println("Value at index 1: " + linkedList.get(1)); // get
 
         linkedList.set(2, 10); // set index 2 to 10
+        linkedList.Insert(99, 2); // insert 99 at index 2
+
+        // linkedList.Remove(4);
+        linkedList.ReverseLl();
 
         System.out.println("Printing list:");
         linkedList.printLinkedList(); // print all nodes
