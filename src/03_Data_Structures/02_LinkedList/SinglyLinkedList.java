@@ -61,6 +61,30 @@ public class SinglyLinkedList {
         }
     }
 
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+        if (size == 0) {
+            Node temp = head;
+            Node tail = head;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+        size++;
+    }
+
+    public void removeFirst() {
+        if (size == 0) {
+            System.out.println("empty Linkedlist");
+            return;
+        }
+        Node temp = head;
+        
+        head = temp.next;
+        temp.next = null;
+        size--;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList linkedList = new SinglyLinkedList(4); // create first node
         linkedList.append(5); // add
@@ -70,6 +94,12 @@ public class SinglyLinkedList {
 
         linkedList.removeLast(); // remove-last
 
+        linkedList.prepend(3); // add-first
+        linkedList.prepend(2); // add-first
+        linkedList.prepend(1); // add-first
+
+        linkedList.removeFirst(); // remove-first
+        
         linkedList.printLinkedList(); // print all nodes
     }
 }
