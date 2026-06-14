@@ -123,22 +123,20 @@ public class SinglyLinkedList {
         return false;
     }
 
-    // public boolean Insert(int value , int index){
-    //     if(index < 0 || index > size) return false;
-    //     if(index == 0){
-    //         prepend(value);
-    //         return true;
-    //     }
-    //     if(index == size){
-    //         append(value);
-    //         return true;
-    //     }
-    //     Node newNode = new Node(value);
-    //     Node temp = get(index);
-    //     newNode.next = temp.next;
-    //     temp = 
+    public boolean Insert(int value , int index){
+        if(index < 0 || index > size) return false;
+        if(index == 0){
+            prepend(value);
+            return true;
+        }
+        if(index == size){
+            append(value);
+            return true;
+        }
+        Node newNode = new Node(value);
+        
 
-    // }
+    }
 
 
     public static void main(String[] args) {

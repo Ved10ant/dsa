@@ -65,8 +65,8 @@ public class SinglyLinkedList {
     public void prepend(int value) {
         Node newNode = new Node(value);
         if (size == 0) {
-            head = newNode;
-            tail = newNode;
+            Node temp = head;
+            Node tail = head;
         } else {
             newNode.next = head;
             head = newNode;
@@ -84,62 +84,27 @@ public class SinglyLinkedList {
         head = head.next;
         temp.next = null;
         size--;
-
-        if (size == 0) {
-            tail = null;
-        }
     }
 
-    // Helper method to get the node for internal use
-    private Node getNode(int index) {
-        if (index < 0 || index >= size) {
+    public Node get(int value) {
+        if (value < 0 || value >= size) {
             System.out.println("invalid index");
             return null;
         }
         Node temp = head;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < value; i++) {
             temp = temp.next;
         }
-
+        System.out.println(temp);
         return temp;
     }
 
-    // Public get method returns the data, not the Node object
-    public int get(int index) {
-        Node temp = getNode(index);
-        if (temp != null) {
-            return temp.data;
+    public boolean set(int value, int index) {
+        Node temp = get(value);
+        if(temp != null){
+            
         }
-        return -1; // Or throw an exception
     }
-
-    // Standard parameter order is (index, value)
-    public boolean set(int index, int value) {
-        Node temp = getNode(index);
-        if (temp != null) {
-            temp.data = value;
-            return true;
-        }
-        return false;
-    }
-
-    // public boolean Insert(int value , int index){
-    //     if(index < 0 || index > size) return false;
-    //     if(index == 0){
-    //         prepend(value);
-    //         return true;
-    //     }
-    //     if(index == size){
-    //         append(value);
-    //         return true;
-    //     }
-    //     Node newNode = new Node(value);
-    //     Node temp = get(index);
-    //     newNode.next = temp.next;
-    //     temp = 
-
-    // }
-
 
     public static void main(String[] args) {
         SinglyLinkedList linkedList = new SinglyLinkedList(4); // create first node
@@ -156,11 +121,8 @@ public class SinglyLinkedList {
 
         linkedList.removeFirst(); // remove-first
 
-        System.out.println("Value at index 1: " + linkedList.get(1)); // get
+        linkedList.get(1); // get
 
-        linkedList.set(2, 10); // set index 2 to 10
-
-        System.out.println("Printing list:");
         linkedList.printLinkedList(); // print all nodes
     }
 }
