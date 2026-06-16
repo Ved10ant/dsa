@@ -75,7 +75,7 @@ public class LL_Contructor {
     }
 
     public static void main(String[] args) {
-        LL_Contructor list = new LL_Contructor(5);
+        // LL_Contructor list = new LL_Contructor(5);
     }
 
 }
