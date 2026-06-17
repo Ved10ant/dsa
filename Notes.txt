@@ -31,3 +31,22 @@ class Node{
 
 UNDER THE HOOD:
 Under the Hood means understanding how Linked Lists are represented and connected in memory using references.
+
+
+Pattern Recognition
+
+Whenever a Linked List question contains words like:
+
+middle
+cycle
+loop
+kth node from end
+palindrome
+split list
+intersection
+
+Think:
+
+"Can I solve this using Slow and Fast Pointers?" Also called as Floyd's Tortois technique;
+
+This is one of the most common linked-list patterns.
