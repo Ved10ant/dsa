@@ -48,5 +48,8 @@ intersection
 Think:
 
 "Can I solve this using Slow and Fast Pointers?" Also called as Floyd's Tortois technique;
-
 This is one of the most common linked-list patterns.
+
+
+Binary To Decimal:
+main formula = decimalValue = decimalValue * 2 + current.value;
