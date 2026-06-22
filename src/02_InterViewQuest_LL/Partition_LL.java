@@ -114,48 +114,49 @@ public class Partition_LL {
 // Partition Linked List (Pivot = x)
 
 // Goal:
-// Rearrange the linked list so that all nodes with values less than x come before nodes with values greater than or equal to x, while preserving their original relative order.
-
-// Approach:
+// Rearrange the linked list so that all nodes with values less than x come
+// before nodes with values greater than or equal to x, while preserving their
+// original relative order.
 
 // 1. Create two separate lists:
 
-//    * D1 (dummy node for smaller values)
-//    * D2 (dummy node for larger/equal values)
+// * D1 (dummy node for smaller values)
+// * D2 (dummy node for larger/equal values)
 
 // 2. Create two tail pointers:
 
-//    * prev1 = D1
-//    * prev2 = D2
+// * prev1 = D1
+// * prev2 = D2
 
 // 3. Traverse the original linked list using current.
 
 // 4. For each node:
 
-//    * Compare current.value with x.
-//    * If current.value < x:
+// * Compare current.value with x.
+// * If current.value < x:
 
-//      * Add the node to the smaller list.
-//      * Move prev1 to the newly added node.
-//    * Else:
+// * Add the node to the smaller list.
+// * Move prev1 to the newly added node.
+// * Else:
 
-//      * Add the node to the larger list.
-//      * Move prev2 to the newly added node.
+// * Add the node to the larger list.
+// * Move prev2 to the newly added node.
 
 // 5. After traversal:
 
-//    * Terminate the larger list:
-//      prev2.next = null
-//    * Connect the smaller list with the larger list:
-//      prev1.next = D2.next
+// * Terminate the larger list:
+// prev2.next = null
+// * Connect the smaller list with the larger list:
+// prev1.next = D2.next
 
 // 6. Update head:
 
-//    * head = D1.next
-//    * D1 is only a dummy node and is not part of the final answer.
+// * head = D1.next
+// * D1 is only a dummy node and is not part of the final answer.
 
 // Key Idea:
-// Instead of rearranging nodes inside one list, build two separate lists and merge them at the end.
+// Instead of rearranging nodes inside one list, build two separate lists and
+// merge them at the end.
 
 // Pointers:
 
