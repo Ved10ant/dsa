@@ -65,7 +65,6 @@ public class DoublyLinkedList {
         } else {
             head.prev = newNode;
             newNode.next = head;
-            head = newNode;
         }
         length++;
     }
@@ -77,7 +76,6 @@ public class DoublyLinkedList {
         ll.append(6);
         ll.append(7);
         ll.removeLast();
-        ll.prepend(2);
         ll.printList();
     }
 }

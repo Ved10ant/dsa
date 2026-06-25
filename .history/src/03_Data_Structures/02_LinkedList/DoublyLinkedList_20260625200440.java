@@ -57,17 +57,9 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public void prepend(int value) {
+    public Node prepend(int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            head.prev = newNode;
-            newNode.next = head;
-            head = newNode;
-        }
-        length++;
+        if()
     }
 
     public static void main(String[] args) {
@@ -77,7 +69,6 @@ public class DoublyLinkedList {
         ll.append(6);
         ll.append(7);
         ll.removeLast();
-        ll.prepend(2);
         ll.printList();
     }
 }

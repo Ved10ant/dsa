@@ -78,6 +78,7 @@ public class DoublyLinkedList {
         ll.append(7);
         ll.removeLast();
         ll.prepend(2);
+        ll.prepend(1);
         ll.printList();
     }
 }
