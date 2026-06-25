@@ -1,3 +1,4 @@
+import org.w3c.dom.Node;
 
 public class DoublyLinkedList {
     private Node head;
@@ -85,72 +86,13 @@ public class DoublyLinkedList {
         }
     }
 
-    public Node get(int index) {
-        if (index < 0 || index >= length) {
-            return null;
-        }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        return temp;
-    }
-
-    public boolean set(int index, int value) {
-        Node temp = get(index);
-        if (temp != null) {
-            temp.value = value;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean insert(int value, int index) {
+    public int get(int index) {
         if (index < 0 || index > length) {
-            return false;
-        }
-        if (index == 0) {
-            prepend(value);
-            return true;
-        }
-        if (index == length) {
-            append(value);
-            return true;
-        }
-        Node newdNode = new Node(value);
-        Node before = get(index - 1);
-        Node after = before.next;
-        newdNode.prev = before;
-        newdNode.next = after;
-        before.next = newdNode;
-        after.prev = newdNode;
-        length++;
-        return true;
-    }
-
-    public boolean remove(int index) {
-        if (index < 0 || index >= length)
-            return false;
-        if (index == 0) {
-            removeFirst();
-            return true;
-        }
-        if (index == length) {
-            removeLast();
-            return true;
+            System.out.println("invalid index");
+            return -1;
         }
         Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        Node after = temp.next;
-        Node before = temp.prev;
-        temp.next = null;
-        temp.prev = null;
-        before.next = after;
-        after.prev = before;
-        length--;
-        return true;
+        for(int i =)
     }
 
     public static void main(String[] args) {
@@ -159,14 +101,9 @@ public class DoublyLinkedList {
         ll.append(5);
         ll.append(6);
         ll.append(7);
-        // ll.removeLast();
-        // ll.prepend(2);
-        // ll.removeFirst();
-        // ll.printList();
-        // System.out.println(ll.get(3).value);
-        // System.out.println(ll.set(3, 45));
-        // ll.insert(9, 2);
-        // ll.remove(2);
+        ll.removeLast();
+        ll.prepend(2);
+        ll.removeFirst();
         ll.printList();
     }
 }

@@ -85,28 +85,33 @@ public class DoublyLinkedList {
         }
     }
 
-    public Node get(int index) {
-        if (index < 0 || index >= length) {
-            return null;
+    public int get(int index) {
+        if (index < 0 || index > length) {
+            System.out.println("invalid index");
+            return -1;
         }
         Node temp = head;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
-        return temp;
+        return temp.value;
     }
 
-    public boolean set(int index, int value) {
-        Node temp = get(index);
-        if (temp != null) {
-            temp.value = value;
-            return true;
+    public int set(int index, int value) {
+        if (index < 0 || index > length) {
+            System.out.println("invalid index");
+            return -1;
         }
-        return false;
+        Node temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.value = value;
+        return temp.value;
     }
 
     public boolean insert(int value, int index) {
-        if (index < 0 || index > length) {
+        if (index > 0 || index < 0) {
             return false;
         }
         if (index == 0) {
@@ -123,34 +128,8 @@ public class DoublyLinkedList {
         newdNode.prev = before;
         newdNode.next = after;
         before.next = newdNode;
-        after.prev = newdNode;
-        length++;
-        return true;
-    }
-
-    public boolean remove(int index) {
-        if (index < 0 || index >= length)
-            return false;
-        if (index == 0) {
-            removeFirst();
-            return true;
-        }
-        if (index == length) {
-            removeLast();
-            return true;
-        }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        Node after = temp.next;
-        Node before = temp.prev;
-        temp.next = null;
-        temp.prev = null;
-        before.next = after;
-        after.prev = before;
-        length--;
-        return true;
+        after.next = newdNode;
+        
     }
 
     public static void main(String[] args) {
@@ -163,10 +142,7 @@ public class DoublyLinkedList {
         // ll.prepend(2);
         // ll.removeFirst();
         // ll.printList();
-        // System.out.println(ll.get(3).value);
-        // System.out.println(ll.set(3, 45));
-        // ll.insert(9, 2);
-        // ll.remove(2);
-        ll.printList();
+        // System.out.println(ll.get(3));
+        System.out.println(ll.set(3, 45));
     }
 }

@@ -1,4 +1,5 @@
 
+
 public class DoublyLinkedList {
     private Node head;
     private Node tail;
@@ -143,13 +144,7 @@ public class DoublyLinkedList {
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
-        Node after = temp.next;
-        Node before = temp.prev;
-        temp.next = null;
-        temp.prev = null;
-        before.next = after;
-        after.prev = before;
-        length--;
+        
         return true;
     }
 
@@ -165,8 +160,7 @@ public class DoublyLinkedList {
         // ll.printList();
         // System.out.println(ll.get(3).value);
         // System.out.println(ll.set(3, 45));
-        // ll.insert(9, 2);
-        // ll.remove(2);
+        ll.insert(9, 2);
         ll.printList();
     }
 }

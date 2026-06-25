@@ -128,30 +128,14 @@ public class DoublyLinkedList {
         return true;
     }
 
-    public boolean remove(int index) {
-        if (index < 0 || index >= length)
-            return false;
-        if (index == 0) {
+    public boolean remove(int index){
+        if(index < 0 || index >= length) return false;
+        if(index == head){
             removeFirst();
-            return true;
+            return r
         }
-        if (index == length) {
-            removeLast();
-            return true;
-        }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        Node after = temp.next;
-        Node before = temp.prev;
-        temp.next = null;
-        temp.prev = null;
-        before.next = after;
-        after.prev = before;
-        length--;
-        return true;
     }
+    
 
     public static void main(String[] args) {
         DoublyLinkedList ll = new DoublyLinkedList(3);
@@ -165,8 +149,7 @@ public class DoublyLinkedList {
         // ll.printList();
         // System.out.println(ll.get(3).value);
         // System.out.println(ll.set(3, 45));
-        // ll.insert(9, 2);
-        // ll.remove(2);
+        ll.insert(9, 2);
         ll.printList();
     }
 }
