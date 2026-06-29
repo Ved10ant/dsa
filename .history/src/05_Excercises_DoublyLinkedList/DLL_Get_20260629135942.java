@@ -1,7 +1,4 @@
-
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
-public class DLL_Get {
+public class DoublyLinkedList {
 
     private Node head;
     private Node tail;
@@ -17,7 +14,7 @@ public class DLL_Get {
         }
     }
 
-    public DLL_Get(int value) {
+    public DoublyLinkedList(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -60,16 +57,16 @@ public class DLL_Get {
             printList();
         }
     }
-
+    
     public void makeEmpty() {
         head = null;
         tail = null;
         length = 0;
     }
 
-    public void append(int value) {
+    public void append (int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
+        if(length == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -80,22 +77,29 @@ public class DLL_Get {
         length++;
     }
 
-    public Node get(int index) {
-        if (index >= length || index < 0) {
-            System.out.println("too large index");
-            return null;
+    public Node removeLast() {
+        if(length == 0) return null;
+        Node temp = tail;
+        if (length == 1) {
+            head = null;
+            tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+            temp.prev = null;
         }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
+        length--;
         return temp;
     }
+ 
 
-    public static void main(String[] args) {
-        DLL_Get ll = new DLL_Get(1);
-        ll.append(2);
-        ll.append(3);
-        System.out.println(ll.get(1).value);
-    }
+     
+
+	/// WRITE GET METHOD HERE ///
+	//                         //
+	//                         //
+	//                         //
+	//                         //
+	/////////////////////////////
+
 }

@@ -1,5 +1,4 @@
-
-public class DLL_Insert {
+public class  {
 
     private Node head;
     private Node tail;
@@ -15,7 +14,7 @@ public class DLL_Insert {
         }
     }
 
-    public DLL_Insert(int value) {
+    public DoublyLinkedList(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -58,16 +57,16 @@ public class DLL_Insert {
             printList();
         }
     }
-
+    
     public void makeEmpty() {
         head = null;
         tail = null;
         length = 0;
     }
 
-    public void append(int value) {
+    public void append (int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
+        if(length == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -78,9 +77,24 @@ public class DLL_Insert {
         length++;
     }
 
+    public Node removeLast() {
+        if(length == 0) return null;
+        Node temp = tail;
+        if (length == 1) {
+            head = null;
+            tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+            temp.prev = null;
+        }
+        length--;
+        return temp;
+    }
+
     public void prepend(int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
+        if(length == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -91,46 +105,43 @@ public class DLL_Insert {
         length++;
     }
 
-    public Node get(int index) {
-        if (index < 0 || index >= length) {
-            return null;
-        }
+    public Node removeFirst() {
+        if(length == 0) return null;
         Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
+        if(length == 1) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+            temp.next = null;
+        }
+        length--;
+        return temp;
+    }
+
+    public Node get(int index) {
+        if (index < 0 || index >= length) return null;
+        Node temp = head;
+        if (index < length/2) {
+            for (int i = 0; i < index; i++) {
+                temp = temp.next;
+            }
+        } else {
+            temp = tail;
+            for (int i = length - 1; i > index; i--) {
+                temp = temp.prev;
+            }
         }
         return temp;
     }
 
-    public boolean insert(int value, int index) {
-        if (index < 0 || index > length) {
-            return false;
-        }
-        if (index == 0) {
-            prepend(value);
+    public boolean set(int index, int value) {
+        Node temp = get(index);
+        if(temp != null) {
+            temp.value = value;
             return true;
         }
-        if (index == length) {
-            append(value);
-            return true;
-        }
-        Node newNode = new Node(value);
-        Node before = get(index - 1);
-        Node after = before.next;
-        newNode.prev = before;
-        newNode.next = after;
-        before.next = newNode;
-        after.prev = newNode;
-        length++;
-        return true;
-    }
-
-    public static void main(String[] args) {
-        DLL_Insert dll = new DLL_Insert(1);
-        dll.append(2);
-        dll.append(3);
-        dll.append(4);
-        dll.insert(10, 2);
-        dll.printAll();
+        return false;
     }
 }

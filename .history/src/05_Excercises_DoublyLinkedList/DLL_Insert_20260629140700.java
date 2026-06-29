@@ -1,7 +1,4 @@
-
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
-public class DLL_Get {
+public class DLL_Insert {
 
     private Node head;
     private Node tail;
@@ -17,7 +14,7 @@ public class DLL_Get {
         }
     }
 
-    public DLL_Get(int value) {
+    public DLL_Insert(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -80,22 +77,28 @@ public class DLL_Get {
         length++;
     }
 
-    public Node get(int index) {
-        if (index >= length || index < 0) {
-            System.out.println("too large index");
-            return null;
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
         }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        return temp;
+        length++;
     }
 
-    public static void main(String[] args) {
-        DLL_Get ll = new DLL_Get(1);
-        ll.append(2);
-        ll.append(3);
-        System.out.println(ll.get(1).value);
-    }
+    public boolean insert(int value, int index) {
+        if (index == 0) {
+            prepend(value);
+            return true;
+        }
+        if (index == length) {
+            append(value);
+            return true;
+        }
+        Node newNode = new Node()
+    }DLL_Append.
 }

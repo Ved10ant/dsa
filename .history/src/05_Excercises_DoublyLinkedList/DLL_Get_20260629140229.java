@@ -1,6 +1,3 @@
-
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
 public class DLL_Get {
 
     private Node head;
@@ -81,21 +78,13 @@ public class DLL_Get {
     }
 
     public Node get(int index) {
-        if (index >= length || index < 0) {
+        if (index > length || index < 0) {
             System.out.println("too large index");
             return null;
         }
         Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        return temp;
-    }
+        for (int i = 0; i < temp; i++) {
 
-    public static void main(String[] args) {
-        DLL_Get ll = new DLL_Get(1);
-        ll.append(2);
-        ll.append(3);
-        System.out.println(ll.get(1).value);
+        }
     }
 }

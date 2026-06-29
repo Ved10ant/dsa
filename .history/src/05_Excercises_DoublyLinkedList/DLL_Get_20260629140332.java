@@ -86,16 +86,9 @@ public class DLL_Get {
             return null;
         }
         Node temp = head;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < temp; i++) {
             temp = temp.next;
         }
         return temp;
-    }
-
-    public static void main(String[] args) {
-        DLL_Get ll = new DLL_Get(1);
-        ll.append(2);
-        ll.append(3);
-        System.out.println(ll.get(1).value);
     }
 }
