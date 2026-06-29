@@ -1,6 +1,4 @@
-import org.w3c.dom.Node;
-
-public class DLL_RemoveFirst {
+public class DoublyLinkedList {
 
     private Node head;
     private Node tail;
@@ -16,7 +14,7 @@ public class DLL_RemoveFirst {
         }
     }
 
-    public DLL_RemoveFirst(int value) {
+    public DoublyLinkedList(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -59,16 +57,16 @@ public class DLL_RemoveFirst {
             printList();
         }
     }
-
+    
     public void makeEmpty() {
         head = null;
         tail = null;
         length = 0;
     }
 
-    public void append(int value) {
+    public void append (int value) {
         Node newNode = new Node(value);
-        if (length == 0) {
+        if(length == 0) {
             head = newNode;
             tail = newNode;
         } else {
@@ -79,29 +77,10 @@ public class DLL_RemoveFirst {
         length++;
     }
 
-    public void removeFirst() {
+	public boolean removeLast(){
         if (length == 0) {
-            return;
+            return null;
         }
-        Node temp = head;
-        head = head.next;
-        head.prev = null;
-        temp.next = null;
-        length--;
-        if (length == 0) {
-            head = null;
-            tail = null;
-        }
-    }
-
-    public static void main(String[] args) {
-        DLL_RemoveFirst dll = new DLL_RemoveFirst(10);
-        dll.append(20);
-        dll.append(30);
-        dll.append(40);
-        dll.printAll();
-        System.out.println("\nRemoving first node:");
-        dll.removeFirst();
-        dll.printAll();
     }
 }
+
