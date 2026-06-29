@@ -1,5 +1,5 @@
 
-public class DLL_Remove {
+public class DLL_Prepend {
 
     private Node head;
     private Node tail;
@@ -15,7 +15,7 @@ public class DLL_Remove {
         }
     }
 
-    public DLL_Remove(int value) {
+    public DLL_Prepend(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -78,71 +78,28 @@ public class DLL_Remove {
         length++;
     }
 
-    public Node removeLast() {
-        if (length == 0)
-            return null;
-        Node temp = tail;
-        if (length == 1) {
-            head = null;
-            tail = null;
+    public void prepend(int value) {
+        Node newNode = new Node(value);
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
         } else {
-            tail = tail.prev;
-            tail.next = null;
-            temp.prev = null;
+            head.prev = newNode;
+            newNode.next = head;
+            head = newNode;
         }
-        length--;
-        return temp;
-    }
-
-    public Node removeFirst() {
-        if (length == 0)
-            return null;
-        Node temp = head;
-        if (length == 1) {
-            head = null;
-            tail = null;
-        } else {
-            head = head.next;
-            head.prev = null;
-            temp.next = null;
-        }
-        length--;
-        return temp;
-    }
-
-    public boolean remove(int index) {
-        if (index < 0 || index >= length)
-            return false;
-        if (index == 0) {
-            removeFirst();
-            return true;
-        }
-        if (index == length) {
-            removeLast();
-            return true;
-        }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        Node before = temp.prev;
-        Node after = temp.next;
-        temp.next = null;
-        temp.prev = null;
-        before.next = after;
-        after.prev = before;
-        length--;
-        return true;
+        length++;
     }
 
     public static void main(String[] args) {
-        DLL_Remove dll = new DLL_Remove(10);
+        DLL_Prepend dll = new DLL_Prepend(10);
         dll.append(20);
         dll.append(30);
         dll.append(40);
-        dll.printAll(); 
-        System.out.println("Removing first node:");
-        dll.remove(1);
+        dll.append(50);
+        dll.printAll();
+        System.out.println("Adding first node:");
+        dll.prepend(0);
         dll.printAll();
     }
 }

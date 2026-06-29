@@ -122,7 +122,7 @@ public class DLL_Remove {
             return true;
         }
         Node temp = head;
-        for (int i = 0; i < index; i++) {
+        for(int i = 0; i < index ; i++){
             temp = temp.next;
         }
         Node before = temp.prev;
@@ -135,14 +135,18 @@ public class DLL_Remove {
         return true;
     }
 
-    public static void main(String[] args) {
-        DLL_Remove dll = new DLL_Remove(10);
-        dll.append(20);
-        dll.append(30);
-        dll.append(40);
-        dll.printAll(); 
-        System.out.println("Removing first node:");
-        dll.remove(1);
-        dll.printAll();
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

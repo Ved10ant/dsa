@@ -1,4 +1,3 @@
-
 public class DLL_Remove {
 
     private Node head;
@@ -110,39 +109,14 @@ public class DLL_Remove {
         return temp;
     }
 
-    public boolean remove(int index) {
-        if (index < 0 || index >= length)
-            return false;
-        if (index == 0) {
-            removeFirst();
-            return true;
-        }
-        if (index == length) {
-            removeLast();
-            return true;
-        }
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        Node before = temp.prev;
-        Node after = temp.next;
-        temp.next = null;
-        temp.prev = null;
-        before.next = after;
-        after.prev = before;
-        length--;
+   public boolean remove(int index){
+    if(index == 0){
+        removeFirst();
         return true;
     }
-
-    public static void main(String[] args) {
-        DLL_Remove dll = new DLL_Remove(10);
-        dll.append(20);
-        dll.append(30);
-        dll.append(40);
-        dll.printAll(); 
-        System.out.println("Removing first node:");
-        dll.remove(1);
-        dll.printAll();
+    if(index == length){
+        removeLast();
     }
+   }
+
 }
